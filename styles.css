@@ -1,0 +1,89 @@
+:root {
+  --black: #000;
+  --white: #fff;
+
+  --sky-top: #020337;
+  --sky-bottom: #01023f;
+  --moon: #ffed9b;
+  --moon-crater: #fee36e;
+
+  --moon-size: 500px;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--sky);
+  background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom)100%);
+}
+
+.moon {
+  position: relative;
+  top: 10px;
+  overflow: hidden;
+  width: var(--moon-size);
+  height: var(--moon-size);
+  border-radius: 50%;
+  background-color: var(--moon);
+}
+
+.crater-1 {
+  position: absolute;
+  top: 50%;
+  left: -10px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.mountain {
+  position: absolute;
+  bottom: 0;
+}
+
+.ridge-1 {
+  position: relative;
+  left: -40px;
+  width: 100px;
+  border-left: 250px inset transparent;
+  border-right: 250px inset transparent;
+  border-bottom: 350px solid var(--black);
+}
+
+.ridge-2 {
+  position: absolute;
+  left: 100px;
+  bottom: 0;
+  width: 150px;
+  border-left: 170px inset transparent;
+  border-right: 170px inset transparent;
+  border-bottom: 300px solid var(--black);
+}
+
+.ridge-3 {
+  position: absolute;
+  left: -100px;
+  bottom: 0;
+  width: 190px;
+  border-left: 120px inset transparent;
+  border-right: 120px inset transparent;
+  border-bottom: 200px solid var(--black);
+}
+
+.ridge-4 {
+  position: absolute;
+  left: 420px;
+  bottom: 0;
+  width: 100px;
+  border-left: 80px inset transparent;
+  border-right: 80px inset transparent;
+  border-bottom: 148px solid var(--black);
+}
