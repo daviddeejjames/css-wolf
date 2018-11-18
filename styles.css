@@ -6,8 +6,13 @@
   --sky-bottom: #01023f;
   --moon: #ffed9b;
   --moon-crater: #fee36e;
-
   --moon-size: 500px;
+
+  --wolf-grey: #7b7b7b;
+  --wolf-light-grey: #8c8c8c;
+  --wolf-body: #6b6b6b;
+
+  --mane: #8e8e8e;
 }
 
 body {
@@ -61,7 +66,7 @@ body {
 .ridge-2 {
   position: absolute;
   left: 100px;
-  bottom: 0;
+  bottom: 25px;
   width: 150px;
   border-left: 170px inset transparent;
   border-right: 170px inset transparent;
@@ -86,4 +91,238 @@ body {
   border-left: 80px inset transparent;
   border-right: 80px inset transparent;
   border-bottom: 148px solid var(--black);
+}
+
+.wolf-image {
+  position: absolute;
+  top: 50px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  opacity: 0.1;
+  background-image: url(wolf.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.wolf {
+  position: absolute;
+  bottom: 325px;
+  width: 315px;
+  height: 230px;
+}
+
+.head {
+  position: absolute;
+  top: 20px;
+  left: 47px;
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+}
+
+.head-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: var(--wolf-grey);
+  z-index: 2;
+}
+
+.eye {
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--black);
+  border-radius: 50%;
+  z-index: 5;
+}
+
+.eye:after {
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 1px;
+  height: 1px;
+  border-radius: 50%;
+  background-color: var(--white);
+  content: '';
+}
+
+.snout {
+  position: absolute;
+  top: 23px;
+  left: -23px;
+  transform: rotate(-35deg);
+  z-index: 5;
+}
+
+.snout-upper {
+  border-left: 28px solid var(--wolf-grey);
+  border-right: 25px inset transparent;
+  border-bottom: 23px inset transparent;
+  border-radius: 50%;
+}
+
+/* Cheek */
+.snout-upper:before {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 28px;
+  height: calc(100% - 5px);
+  border-radius: 50%;
+  border-bottom-right-radius: 0;
+  z-index: 5;
+  background-color: var(--wolf-light-grey);
+}
+
+/* Nose line */
+.snout-upper:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 7px;
+  width: 28px;
+  height: 9px;
+  background-color: var(--wolf-grey);
+}
+
+.snout-lower {
+  position: absolute;
+  left: 5px;
+  bottom: -7px;
+  border-left: 28px solid var(--wolf-grey);
+  border-right: 12px inset transparent;
+  border-bottom: 12px inset transparent;
+  border-radius: 50%;
+}
+
+.nose {
+  position: absolute;
+  top: 0;
+  left: 1px;
+  border-left: 10px solid var(--black);
+  border-right: 10px inset transparent;
+  border-bottom: 10px inset transparent;
+  z-index: 1;
+}
+
+.ear-left {
+  position: absolute;
+  top: 0px;
+  right: -8px;
+  transform: rotate(-69deg) skewY(6deg);
+  width: 40px;
+  height: 20px;
+  border-right: 20px ridge var(--wolf-grey);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.ear-right {
+  position: absolute;
+  top: 8px;
+  right: 1px;
+  transform: rotate(-77deg) skewY(6deg);
+  width: 40px;
+  height: 20px;
+  border-right: 20px ridge var(--wolf-grey);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.mane-lower-1 {
+  position: absolute;
+  top: 18px;
+  left: -13px;
+  transform: rotate(-29deg);
+  width: 35px;
+  height: 59px;
+  border-right: 20px solid var(--wolf-grey);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.mane-lower-2 {
+  position: absolute;
+  top: 10px;
+  right: -13px;
+  transform: rotate(-23deg) skewY(3deg);
+  width: 35px;
+  height: 60px;
+  border-right: 20px solid var(--wolf-grey);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.mane-higher-1 {
+  position: absolute;
+  top: -7px;
+  right: -23px;
+  transform: rotate(118deg);
+  width: 20px;
+  height: 40px;
+  border-right: 6px solid var(--mane);
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.mane-higher-2 {
+  position: absolute;
+  top: -15px;
+  right: -22px;
+  transform: rotate(107deg);
+  width: 25px;
+  height: 40px;
+  border-right: 6px solid var(--mane);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.body {
+  position: absolute;
+  top: 89px;
+  left: 78px;
+  width: 157px;
+  height: 66px;
+}
+
+.top-section {
+  position: absolute;
+  top: -35px;
+  left: -7px;
+  width: 62px;
+  height: 83px;
+  border-radius: 50%;
+  background-color: var(--wolf-body);
+}
+
+.mid-section {
+  width: 100%;
+  height: 100%;
+  transform: rotate(11deg);
+  border-radius: 100px;
+  background-color: var(--wolf-body);
+}
+
+.tail {
+  position: absolute;
+  top: 93px;
+  right: 0px;
+  transform: rotate(120deg);
+  width: 56px;
+  height: 95px;
+  border-right: 27px solid var(--mane);
+  border-radius: 50%;
+  z-index: 1;
 }
