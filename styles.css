@@ -6,6 +6,7 @@
   --sky-bottom: #01023f;
   --moon: #ffed9b;
   --moon-crater: #fee36e;
+  --moon-crater-shadow: #f9d11c;
   --moon-size: 500px;
 
   --wolf-grey: #7b7b7b;
@@ -70,6 +71,7 @@ body {
 }
 
 .moon {
+  box-sizing: border-box;
   position: absolute;
   bottom: 225px;
   overflow: hidden;
@@ -77,6 +79,16 @@ body {
   height: var(--moon-size);
   border-radius: 50%;
   background-color: var(--moon);
+  border-right: 6px solid var(--moon-crater-shadow);
+}
+
+.crater {
+  opacity: 0.2;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+  border-left: 6px solid var(--moon-crater-shadow);
+  transform: rotate(-125deg);
 }
 
 .crater-1 {
@@ -87,6 +99,95 @@ body {
   height: 70px;
   border-radius: 50%;
   background-color: var(--moon-crater);
+}
+
+.crater-2 {
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-3 {
+  position: absolute;
+  top: -5%;
+  left: 47%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-4 {
+  position: absolute;
+  top: 33%;
+  left: 87%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-5 {
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-6 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-7 {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-8 {
+  position: absolute;
+  top: 20%;
+  left: 60%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-9 {
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: var(--moon-crater);
+}
+
+.crater-10 {
+  position: absolute;
+  top: 65%;
+  left: 60%;
+  width: 180px;
+  height: 180px;
+
 }
 
 .mountain {
@@ -202,7 +303,6 @@ body {
   border-radius: 50%;
 }
 
-/* Cheek */
 .snout-upper:before {
   display: block;
   content: '';
@@ -217,7 +317,6 @@ body {
   background-color: var(--wolf-light-grey);
 }
 
-/* Nose line */
 .snout-upper:after {
   display: block;
   content: '';
@@ -382,7 +481,7 @@ body {
   transform: rotate(120deg) rotateX(5deg);
   width: 56px;
   height: 95px;
-  border-right: 27px solid var(--wolf-mane);
+  border-right: 27px solid var(--wolf-leg-behind);
   border-radius: 50%;
   z-index: 1;
   will-change: transform;
@@ -400,7 +499,7 @@ body {
   transform: rotate(6deg);
   width: 35px;
   height: 47px;
-  border-right: 16px solid var(--wolf-mane);
+  border-right: 16px solid var(--wolf-leg-behind);
   border-radius: 50%;
   z-index: 1;
 }
@@ -412,7 +511,7 @@ body {
   transform: rotate(-180deg);
   width: 27px;
   height: 38px;
-  border-right: 16px solid var(--wolf-mane);
+  border-right: 16px solid var(--wolf-leg-behind);
   border-radius: 50%;
   z-index: 1;
 }
