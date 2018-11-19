@@ -15,6 +15,22 @@
   --wolf-chest: #cecdcd;
 
   --wolf-mane: #8e8e8e;
+
+  --howl-timing: 1s;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--sky);
+  background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom)100%);
 }
 
 .wolf *,
@@ -33,23 +49,29 @@
   --wolf-mane: var(--black);
 }
 
-body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  background-color: var(--sky);
-  background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-bottom)100%);
+.wolf:hover .tail {
+  animation-play-state: paused;
+}
+
+.wolf:hover .head {
+  transform: rotate(85deg);
+}
+
+.wolf:hover .head .mane-lower-1 {
+  transform: rotate(-85deg);
+}
+
+.wolf:hover .head .mane-lower-2 {
+  transform: rotate(-79deg) skewY(-17deg) translate(-8px, -11px);
+}
+
+.wolf:hover .front-chest {
+  transform: translate(2px, -5px);
 }
 
 .moon {
-  position: relative;
-  top: 10px;
+  position: absolute;
+  bottom: 225px;
   overflow: hidden;
   width: var(--moon-size);
   height: var(--moon-size);
@@ -111,21 +133,6 @@ body {
   border-bottom: 148px solid var(--black);
 }
 
-.wolf-image {
-  display: none;
-  position: absolute;
-  top: 50px;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 500px;
-  height: 500px;
-  opacity: 0.1;
-  background-image: url(wolf.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
 .wolf {
   position: absolute;
   bottom: 301px;
@@ -141,6 +148,8 @@ body {
   width: 50px;
   height: 50px;
   z-index: 10;
+  transform: rotate(0);
+  transition: transform var(--howl-timing);
 }
 
 .head-main {
@@ -161,6 +170,9 @@ body {
   background-color: var(--black);
   border-radius: 50%;
   z-index: 5;
+  animation: blink 4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
 }
 
 .eye:after {
@@ -271,6 +283,7 @@ body {
   border-right: 20px solid var(--wolf-grey);
   border-radius: 50%;
   z-index: -1;
+  transition: border-color 0.3s, transform var(--howl-timing);
 }
 
 .mane-lower-2 {
@@ -282,6 +295,7 @@ body {
   height: 60px;
   border-right: 20px solid var(--wolf-grey);
   border-radius: 50%;
+  transition: border-color 0.3s, transform var(--howl-timing);
   z-index: -1;
 }
 
@@ -363,8 +377,6 @@ body {
 
 .tail {
   position: absolute;
-  /* top: 93px; */
-  /* right: 0px; */
   top: -15px;
   right: -20px;
   transform: rotate(120deg) rotateX(5deg);
@@ -373,22 +385,12 @@ body {
   border-right: 27px solid var(--wolf-mane);
   border-radius: 50%;
   z-index: 1;
-   will-change: transform;
-   transform-origin: bottom left;
+  will-change: transform;
+  transform-origin: bottom left;
   animation: tail-wag 0.5s linear;
   animation-direction: alternate-reverse;
   animation-iteration-count: infinite;
-}
-
-@keyframes tail-wag {
-  0% {
-    transform: rotate(120deg) rotateY(-10deg);
-
-  }
-
-  100% {
-    transform: rotate(121deg) rotateY(0deg);
-  }
+  animation-fill-mode: forwards;
 }
 
 .tail .top {
@@ -419,12 +421,13 @@ body {
   position: absolute;
   top: -39px;
   left: -23px;
-  transform: rotate(182deg);
+  transform: rotate(2deg);
   width: 56px;
   height: 72px;
-  border-right: 27px solid var(--wolf-chest);
+  border-left: 27px solid var(--wolf-chest);
   border-radius: 50%;
   z-index: 5;
+  transition: border-color 0.3s, border-radius var(--howl-timing), transform var(--howl-timing);
 }
 
 .lower-chest {
@@ -437,6 +440,18 @@ body {
   border-right: 27px solid var(--wolf-body);
   border-radius: 50%;
   z-index: 8;
+}
+
+.lower-chest:before {
+  position: absolute;
+  content: '';
+  top: 57px;
+  left: -24px;
+  width: 20px;
+  height: 20px;
+  transform: rotate(45deg);
+  background-color: var(--wolf-body);
+  z-index: 1;
 }
 
 .left-front-leg {
@@ -609,4 +624,44 @@ body {
   border-bottom-left-radius: 0;
   background-color: var(--wolf-leg-behind);
   transform: rotate(12deg);
+}
+
+@keyframes tilt-head {
+  0% {
+    transform: rotate(0deg)
+  }
+
+  100% {
+    transform: rotate(80deg);
+  }
+}
+
+@keyframes blink {
+  0% {
+    transform: scaleY(1);
+
+  }
+
+  3% {
+    transform: scaleY(0);
+  }
+
+  6% {
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes tail-wag {
+  0% {
+    transform: rotate(120deg) rotateY(-14deg);
+
+  }
+
+  100% {
+    transform: rotate(121deg) rotateY(0deg);
+  }
 }
