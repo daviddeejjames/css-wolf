@@ -23,14 +23,14 @@
   transition: background-color 0.3s, border-color 0.3s;
 }
 
-.wolf:hover * {
-  --white: #000;
-  --wolf-grey: #000;
-  --wolf-light-grey: #000;
-  --wolf-body: #000;
-  --wolf-leg-behind: #000;
-  --wolf-chest: #000;
-  --wolf-mane: #000;
+.wolf:hover {
+  --white: var(--black);
+  --wolf-grey: var(--black);
+  --wolf-light-grey: var(--black);
+  --wolf-body: var(--black);
+  --wolf-leg-behind: var(--black);
+  --wolf-chest: var(--black);
+  --wolf-mane: var(--black);
 }
 
 body {
