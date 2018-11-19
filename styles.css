@@ -11,9 +11,26 @@
   --wolf-grey: #7b7b7b;
   --wolf-light-grey: #8c8c8c;
   --wolf-body: #6b6b6b;
+  --wolf-leg-behind: #5b5b5b;
   --wolf-chest: #cecdcd;
 
   --wolf-mane: #8e8e8e;
+}
+
+.wolf *,
+.wolf *:before,
+.wolf *:after {
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.wolf:hover * {
+  --white: #000;
+  --wolf-grey: #000;
+  --wolf-light-grey: #000;
+  --wolf-body: #000;
+  --wolf-leg-behind: #000;
+  --wolf-chest: #000;
+  --wolf-mane: #000;
 }
 
 body {
@@ -95,6 +112,7 @@ body {
 }
 
 .wolf-image {
+  display: none;
   position: absolute;
   top: 50px;
   left: 0;
@@ -110,9 +128,10 @@ body {
 
 .wolf {
   position: absolute;
-  bottom: 325px;
+  bottom: 301px;
   width: 315px;
   height: 230px;
+  cursor: pointer;
 }
 
 .head {
@@ -308,22 +327,90 @@ body {
   background-color: var(--wolf-body);
 }
 
+.top-section:before {
+  position: absolute;
+  top: -21px;
+  right: -2px;
+  transform: rotate(128deg);
+  width: 20px;
+  height: 40px;
+  border-right: 6px solid var(--wolf-body);
+  border-radius: 50%;
+  content: '';
+}
+
+.top-section:after {
+  position: absolute;
+  top: -11px;
+  right: -7px;
+  transform: rotate(128deg);
+  width: 20px;
+  height: 40px;
+  border-right: 6px solid var(--wolf-body);
+  border-radius: 50%;
+  content: '';
+}
+
 .mid-section {
+  position: relative;
   width: 100%;
   height: 100%;
   transform: rotate(11deg);
   border-radius: 100px;
   background-color: var(--wolf-body);
+  z-index: 1;
 }
 
 .tail {
   position: absolute;
-  top: 93px;
-  right: 0px;
-  transform: rotate(120deg);
+  /* top: 93px; */
+  /* right: 0px; */
+  top: -15px;
+  right: -20px;
+  transform: rotate(120deg) rotateX(5deg);
   width: 56px;
   height: 95px;
   border-right: 27px solid var(--wolf-mane);
+  border-radius: 50%;
+  z-index: 1;
+   will-change: transform;
+   transform-origin: bottom left;
+  animation: tail-wag 0.5s linear;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+}
+
+@keyframes tail-wag {
+  0% {
+    transform: rotate(120deg) rotateY(-10deg);
+
+  }
+
+  100% {
+    transform: rotate(121deg) rotateY(0deg);
+  }
+}
+
+.tail .top {
+  position: absolute;
+  top: 49px;
+  left: 17px;
+  transform: rotate(6deg);
+  width: 35px;
+  height: 47px;
+  border-right: 16px solid var(--wolf-mane);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.tail .bottom {
+  position: absolute;
+  top: 19px;
+  left: 61px;
+  transform: rotate(-180deg);
+  width: 27px;
+  height: 38px;
+  border-right: 16px solid var(--wolf-mane);
   border-radius: 50%;
   z-index: 1;
 }
@@ -337,7 +424,7 @@ body {
   height: 72px;
   border-right: 27px solid var(--wolf-chest);
   border-radius: 50%;
-  z-index: 1;
+  z-index: 5;
 }
 
 .lower-chest {
@@ -349,20 +436,177 @@ body {
   height: 72px;
   border-right: 27px solid var(--wolf-body);
   border-radius: 50%;
-  z-index: 1;
+  z-index: 8;
 }
 
 .left-front-leg {
   position: absolute;
-  top: 50px;
-  left: 50px;
+  top: 52px;
+  left: 15px;
+  z-index: 5;
 }
 
-.left-front-leg .leg {
+.left-front-leg .top {
+  width: 10px;
+  border-left: 9px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 50px solid var(--wolf-body);
+  transform: rotate(-6deg);
+}
+
+.left-front-leg .mid {
   position: absolute;
-  width: 15px;
-  border-left: 10px inset transparent;
-  border-right: 10px inset transparent;
-  border-bottom: 50px solid #000;
+  left: 7px;
+  bottom: -4px;
+  width: 6px;
+  border-left: 4px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 11px solid var(--wolf-body);
+  transform: rotate(-62deg);
 }
 
+.left-front-leg .paw {
+  position: absolute;
+  bottom: -9px;
+  left: 2px;
+  width: 16px;
+  height: 7px;
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  background-color: var(--wolf-body);
+}
+
+.right-front-leg {
+  position: absolute;
+  top: 48px;
+  left: 34px;
+}
+
+.right-front-leg .top {
+  width: 10px;
+  border-left: 9px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 50px solid var(--wolf-leg-behind);
+  transform: rotate(-6deg);
+}
+
+.right-front-leg .mid {
+  position: absolute;
+  left: 7px;
+  bottom: -4px;
+  width: 6px;
+  border-left: 4px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 11px solid var(--wolf-leg-behind);
+  transform: rotate(-62deg);
+}
+
+.right-front-leg .paw {
+  position: absolute;
+  bottom: -9px;
+  left: 2px;
+  width: 16px;
+  height: 7px;
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  background-color: var(--wolf-leg-behind);
+}
+
+.left-back-leg {
+  position: absolute;
+  top: 75px;
+  left: 111px;
+  z-index: 5;
+  transform: rotate(-11deg);
+}
+
+.left-back-leg .top {
+  width: 10px;
+  border-left: 9px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 50px solid var(--wolf-body);
+  transform: rotate(-6deg);
+}
+
+.left-back-leg .top-beef {
+  position: absolute;
+  top: -25px;
+  left: -6px;
+  width: 24px;
+  height: 65px;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  background-color: var(--wolf-body);
+}
+
+.left-back-leg .mid {
+  position: absolute;
+  left: 7px;
+  bottom: -4px;
+  width: 6px;
+  border-left: 4px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 11px solid var(--wolf-body);
+  transform: rotate(-62deg);
+}
+
+.left-back-leg .paw {
+  position: absolute;
+  bottom: -6px;
+  left: 2px;
+  width: 16px;
+  height: 7px;
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  background-color: var(--wolf-body);
+  transform: rotate(12deg);
+}
+
+.right-back-leg {
+  position: absolute;
+  top: 65px;
+  left: 128px;
+  transform: rotate(-11deg);
+}
+
+.right-back-leg .top {
+  width: 10px;
+  border-left: 9px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 50px solid var(--wolf-leg-behind);
+  transform: rotate(-6deg);
+}
+
+.right-back-leg .top-beef {
+  position: absolute;
+  top: -25px;
+  left: -6px;
+  width: 24px;
+  height: 65px;
+  border-radius: 50%;
+  transform: rotate(-20deg);
+  background-color: var(--wolf-leg-behind);
+}
+
+.right-back-leg .mid {
+  position: absolute;
+  left: 7px;
+  bottom: -4px;
+  width: 6px;
+  border-left: 4px inset transparent;
+  border-right: 7px inset transparent;
+  border-top: 11px solid var(--wolf-leg-behind);
+  transform: rotate(-62deg);
+}
+
+.right-back-leg .paw {
+  position: absolute;
+  bottom: -8px;
+  left: 1px;
+  width: 16px;
+  height: 7px;
+  border-radius: 50%;
+  border-bottom-left-radius: 0;
+  background-color: var(--wolf-leg-behind);
+  transform: rotate(12deg);
+}
